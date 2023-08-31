@@ -3,7 +3,7 @@ name: Ansible Deployment
 on:
   push:
     branches:
-      - main  # Adjust this to your main branch name
+      - dev  # Adjust this to your main branch name
 
 jobs:
   deploy:
