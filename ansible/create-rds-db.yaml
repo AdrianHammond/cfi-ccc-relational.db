@@ -2,8 +2,8 @@
 - name: "Create RDS instance"
   hosts: localhost
   vars: 
-    username: myork
-    password: redhat123
+    username: myork # need to move
+    password: redhat123 # need to move
     allocated_storage: 10 
     DB_ENGINE: "mariadb"
     DB_ID: "CFI-test"
