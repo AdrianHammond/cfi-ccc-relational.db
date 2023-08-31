@@ -1,0 +1,20 @@
+---
+- name: "Create RDS instance"
+  hosts: localhost
+  vars: 
+    username: myork
+    password: redhat123
+    allocated_storage: 10 
+    DB_ENGINE: "mariadb"
+    DB_ID: "CFI-test"
+  tasks:
+  - name: Create a DB instance using the default AWS KMS encryption key
+    community.aws.rds_instance:
+      id: "{{ DB_ID }}"
+      state: present
+      engine: "{{ DB_ENGINE }}"
+      storage_encrypted: True
+      db_instance_class: db.t2.medium
+      username: "{{ username }}"
+      password: "{{ password }}"
+      allocated_storage: "{{ allocated_storage }}"
