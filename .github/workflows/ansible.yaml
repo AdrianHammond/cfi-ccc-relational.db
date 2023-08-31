@@ -24,7 +24,7 @@ jobs:
         pip install ansible
 
     - name: Run Ansible playbook
-      run: ansible/create-rds-db.yaml  # Adjust the playbook filename
+      run: ansible-playbook ansible/create-rds-db.yaml  # Adjust the playbook filename
 
     # You can add more steps for notifications, testing, etc. after deployment
 
