@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: fedora-latest
+    runs-on: fedora
 
     steps:
     - name: Checkout code
