@@ -1,4 +1,4 @@
-name: Ansible Deployment
+name: Ansible Amazon RDS Deployment
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: fedora-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
@@ -18,14 +18,15 @@ jobs:
       with:
         python-version: 3.8  # Use the desired Python version
 
-    - name: Install Ansible
+    - name: Install Ansible and botocore
       run: |
         python -m pip install --upgrade pip
         pip install ansible
+        pip install boto3 botocore
 
-    - name: Install Botocore
-      run: |
-        pip install botocore
+    # - name: Install Botocore
+    #   run: |
+    #     pip install boto3 botocore
 
     - name: Run Ansible playbook
       run: ansible-playbook ansible/create-rds-db.yaml  # Adjust the playbook filename

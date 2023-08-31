@@ -10,6 +10,7 @@
   tasks:
   - name: Create a new DB instance in RDS/AWS in the default VPC
     community.aws.rds_instance:
+      aws_region: eu-west-2
       id: "{{ DB_ID }}"
       state: present
       engine: "{{ DB_ENGINE }}"
