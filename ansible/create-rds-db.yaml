@@ -8,7 +8,7 @@
     DB_ENGINE: "mariadb"
     DB_ID: "CFI-test"
   tasks:
-  - name: Create a DB instance using the default AWS KMS encryption key
+  - name: Create a new DB instance in RDS/AWS in the default VPC
     community.aws.rds_instance:
       id: "{{ DB_ID }}"
       state: present
