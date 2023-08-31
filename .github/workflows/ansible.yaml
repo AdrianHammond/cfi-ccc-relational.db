@@ -23,6 +23,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install ansible
 
+    - name: Install Botocore
+      run: |
+        pip install botocore
+
     - name: Run Ansible playbook
       run: ansible-playbook ansible/create-rds-db.yaml  # Adjust the playbook filename
 
