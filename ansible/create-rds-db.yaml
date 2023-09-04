@@ -7,10 +7,11 @@
     allocated_storage: 10 
     DB_ENGINE: "mariadb"
     DB_ID: "CFI-test"
+    DB_AWS_REGION: "eu-west-2"
   tasks:
   - name: Create a new DB instance in RDS/AWS in the default VPC
     community.aws.rds_instance:
-      aws_region: eu-west-2
+      aws_region: "{{ DB_AWS_REGION }}"
       id: "{{ DB_ID }}"
       state: present
       engine: "{{ DB_ENGINE }}"
@@ -19,3 +20,6 @@
       username: "{{ username }}"
       password: "{{ password }}"
       allocated_storage: "{{ allocated_storage }}"
+      # vpc_security_group_ids:
+      #   - "vpc-0a60f34d3202103c4"
+      # db_subnet_group_name: "subnet/subnet-0ffd0bc7d27f717ad"
