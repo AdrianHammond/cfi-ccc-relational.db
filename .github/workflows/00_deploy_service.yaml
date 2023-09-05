@@ -1,4 +1,5 @@
-name: Ansible Amazon RDS Deployment
+# 00_deploy_service.yaml
+name: deploy_service
 
 on:
   push:

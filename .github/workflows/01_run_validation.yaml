@@ -1,0 +1,17 @@
+# 01_run_validation.yaml
+name: run_validation
+on:
+  workflow_run:
+    workflows: ["deploy_service"]
+    types:
+      - completed
+
+
+jobs:
+  print_message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print a Message
+        run: echo "This is the run validation workflow"
+
