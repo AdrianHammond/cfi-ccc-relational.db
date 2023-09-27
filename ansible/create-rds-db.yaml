@@ -6,8 +6,8 @@
     DB_ENGINE: "mariadb"
     DB_ID: "CFI-test"
     DB_AWS_REGION: "us-east-2"
-    username: cfi_user
-    password: RedHat123
+    master_username: cfiuser
+    master_user_password: RedHat123
     
   tasks:
   - name: Create a new DB instance in RDS/AWS in the default VPC
