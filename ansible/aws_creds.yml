@@ -1,5 +1,0 @@
-# A sample credentials file we can pass into Ansible.
-AWS_ACCESS_KEY_ID: MYACCESSKEY
-AWS_SECRET_ACCESS_KEY: MYSECRETACCESSKEY
-RDS_DB_USERNAME: "cfiuser"
-RDS_DB_PASSWORD: "cfi#12345"
