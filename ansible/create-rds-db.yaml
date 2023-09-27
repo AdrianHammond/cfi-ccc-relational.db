@@ -7,11 +7,12 @@
     allocated_storage: 10 
     DB_ENGINE: "mariadb"
     DB_ID: "CFI-test"
+    aws_region: "us-east-2"
     
   tasks:
   - name: Create a new DB instance in RDS/AWS in the default VPC
     community.aws.rds_instance:
-#      aws_region: "{{ DB_AWS_REGION }}"
+      aws_region: "{{ DB_AWS_REGION }}"
       id: "{{ DB_ID }}"
       state: present
       engine: "{{ DB_ENGINE }}"
