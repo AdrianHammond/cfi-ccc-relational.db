@@ -4,6 +4,9 @@ AWS requires a default VPC to be created
 AWS requires a default Subnet to be created
 Use CLI
 
+#Git Secrets
+
+
 # Usage
 
 To use the credentials file aws_creds.yml, you can use the --extra-vars
