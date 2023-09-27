@@ -37,4 +37,28 @@ jobs:
       run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY" ansible/create-rds-db.yaml
       
 # You can add more steps for notifications, testing, etc. after deployment
+
+  job2:
+    name: validate
+    needs: deploy
+    runs-on: ubuntu-latest
+
+#steps needs to be updated with validator
+    steps:
+      - name: Print a Message
+        run: echo "This is the run validation workflow"
+
+
+  job3:
+    name: destroy
+    needs: validate
+    runs-on: ubuntu-latest
+    
+#steps needs to be update with service destroy playbook
+    steps:
+      - name: Print a Message
+        run: echo "This is the destroy service workflow"
+
+
+
     
