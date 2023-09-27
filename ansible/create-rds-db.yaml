@@ -2,11 +2,9 @@
 - name: "Create RDS instance"
   hosts: localhost
   vars: 
-    username: myork # need to move
-    password: redhat123 # need to move
     allocated_storage: 10 
     DB_ENGINE: "mariadb"
-    DB_ID: "CFI-test"
+    DB_ID: "CFI-test-secure"
     DB_AWS_REGION: "eu-west-2"
   tasks:
   - name: Create a new DB instance in RDS/AWS in the default VPC
@@ -17,9 +15,13 @@
       engine: "{{ DB_ENGINE }}"
       storage_encrypted: True
       db_instance_class: db.t2.medium
-      username: "{{ username }}"
-      password: "{{ password }}"
+      username: "{{ RDS_DB_USERNAME }}"
+      password: "{{ RDS_DB_PASSWORD }}"
       allocated_storage: "{{ allocated_storage }}"
-      # vpc_security_group_ids:
-      #   - "vpc-0a60f34d3202103c4"
-      # db_subnet_group_name: "subnet/subnet-0ffd0bc7d27f717ad"
+      aws_secret_key: "{{ AWS_SECRET_ACCESS_KEY }}"
+      aws_access_key:  "{{ AWS_ACCESS_KEY_ID }}"
+    register: dbdetails
+
+  - name: Print the details of the database
+    debug:
+      var: dbdetails
