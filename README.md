@@ -1,3 +1,9 @@
+#AWS Set up
+
+AWS requires a default VPC to be created
+
+
+
 # Usage
 
 To use the credentials file aws_creds.yml, you can use the --extra-vars
