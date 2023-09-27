@@ -1,7 +1,7 @@
 #AWS Set up
 
 AWS requires a default VPC to be created
-
+AWS requires a default Subnet to be created
 
 
 # Usage
