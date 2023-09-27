@@ -2,7 +2,7 @@
 - name: "Delete RDS instance"
   hosts: localhost
   vars: 
-    DB_ID: "CFI-validator-db-5"
+    DB_ID: "CFI-validator-db-6"
     
   tasks:
   - name: Delete a DB instance in RDS/AWS in the default VPC

@@ -54,8 +54,11 @@ jobs:
     needs: validate
     runs-on: ubuntu-latest
 
-#steps needs to be update with service destroy playbook
     steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+    
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -68,7 +71,7 @@ jobs:
           pip install boto3 botocore
 
       - name: Run Ansible playbook
-      
+
         run: ansible-playbook ansible/delete-rds-db.yaml
  
 
