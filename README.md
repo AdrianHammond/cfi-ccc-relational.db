@@ -2,7 +2,7 @@
 
 AWS requires a default VPC to be created
 AWS requires a default Subnet to be created
-
+Use CLI
 
 # Usage
 
