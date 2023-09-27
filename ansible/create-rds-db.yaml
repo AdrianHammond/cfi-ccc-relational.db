@@ -6,6 +6,8 @@
     DB_ENGINE: "mariadb"
     DB_ID: "CFI-test-secure"
     DB_AWS_REGION: "eu-west-2"
+    username: "cfiuser"
+    password: "cfi12345"
   tasks:
   - name: Create a new DB instance in RDS/AWS in the default VPC
     community.aws.rds_instance:
