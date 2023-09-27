@@ -15,11 +15,11 @@
       engine: "{{ DB_ENGINE }}"
       storage_encrypted: True
       db_instance_class: db.t2.medium
+      allocated_storage: "{{ allocated_storage }}"
+      aws_access_key:  "{{ AWS_ACCESS_KEY_ID }}"
+      aws_secret_key: "{{ AWS_SECRET_ACCESS_KEY }}"
       username: "{{ RDS_DB_USERNAME }}"
       password: "{{ RDS_DB_PASSWORD }}"
-      allocated_storage: "{{ allocated_storage }}"
-      aws_secret_key: "{{ AWS_SECRET_ACCESS_KEY }}"
-      aws_access_key:  "{{ AWS_ACCESS_KEY_ID }}"
     register: dbdetails
 
   - name: Print the details of the database
