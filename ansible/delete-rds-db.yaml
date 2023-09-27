@@ -2,11 +2,13 @@
 - name: "Delete RDS instance"
   hosts: localhost
   vars: 
-    DB_ID: "CFI-validator-db-6"
+    DB_ID: "CFI-validator-db-7"
+    DB_AWS_REGION: "us-east-2"
     
   tasks:
   - name: Delete a DB instance in RDS/AWS in the default VPC
     community.aws.rds_instance:
+      aws_region: "{{ DB_AWS_REGION }}"
       id: "{{ DB_ID }}"
       state: absent
       skip_final_snapshot: True
