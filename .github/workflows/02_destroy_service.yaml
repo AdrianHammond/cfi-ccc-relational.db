@@ -1,0 +1,16 @@
+# 02_destroy_service
+name: destroy_service
+on:
+  workflow_run:
+    workflows: ["run_validation"]
+    types:
+      - completed
+
+
+jobs:
+  print_message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print a Message
+        run: echo "This is the destroy service workflow"
