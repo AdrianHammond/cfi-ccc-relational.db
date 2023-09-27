@@ -36,11 +36,7 @@ jobs:
         RDS_DB_USERNAME: ${{ secret.RDS_DB_USERNAME }}
         RDS_DB_PASSWORD: ${{ secret.RDS_DB_PASSWORD }}
 
-
-
-      run: |
-
-      ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY username=$RDS_DB_USERNAME password=$RDS_DB_PASSWORD" ansible/create-rds-db.yaml
+      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY username=$RDS_DB_USERNAME password=$RDS_DB_PASSWORD" ansible/create-rds-db.yaml
      
 
     # You can add more steps for notifications, testing, etc. after deployment
