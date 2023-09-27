@@ -6,7 +6,7 @@
     password: redhat123
     allocated_storage: 10 
     DB_ENGINE: "mariadb"
-    DB_ID: "CFI-validator-db"
+    DB_ID: "CFI-validator-db-5"
     DB_AWS_REGION: "us-east-2"
   
     

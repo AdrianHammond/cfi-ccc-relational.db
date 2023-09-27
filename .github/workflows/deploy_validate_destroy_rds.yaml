@@ -68,6 +68,7 @@ jobs:
           pip install boto3 botocore
 
       - name: Run Ansible playbook
+      
         run: ansible-playbook ansible/delete-rds-db.yaml
  
 
