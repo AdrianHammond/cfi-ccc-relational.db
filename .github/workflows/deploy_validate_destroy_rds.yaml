@@ -1,4 +1,9 @@
-# 00_rds_validate.yaml
+#########################################################
+##                                                     ##
+##                  CREATE SERVICE                     ##
+##                                                     ##
+#########################################################
+
 name: deploy_validate_destroy_rds
 
 on:
@@ -36,18 +41,32 @@ jobs:
 #   run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY master_username=$USERNAME password=$PASSWORD" ansible/create-rds-db.yaml
       run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY" ansible/create-rds-db.yaml
       
-# You can add more steps for notifications, testing, etc. after deployment
+
+#########################################################
+##                                                     ##
+##                VALIDATE SERVICE                     ##
+##                                                     ##
+#########################################################
+
 
   validate:
     name: validate
     needs: deploy
     runs-on: ubuntu-latest
 
-#steps needs to be updated with validator
+#  ==>>>  steps needs to be added below to invoke validator <<<===
+
     steps:
       - name: Print a Message
         run: echo "This is the run validation workflow"
 
+        
+
+#########################################################
+##                                                     ##
+##                  DESTROY SERVICE                     ##
+##                                                     ##
+#########################################################
 
   destroy:
     name: destroy
