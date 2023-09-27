@@ -55,9 +55,20 @@ jobs:
     runs-on: ubuntu-latest
 
 #steps needs to be update with service destroy playbook
-    steps:
-      - name: Print a Message
-        run: echo "This is the destroy service workflow"
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8  # Use the desired Python version
+
+    - name: Install Ansible and botocore
+      run: |
+        python -m pip install --upgrade pip
+        pip install ansible
+        pip install boto3 botocore
+
+    - name: Run Ansible playbook
+      run: ansible-playbook ansible/delete-rds-db.yaml
+ 
 
 
 
