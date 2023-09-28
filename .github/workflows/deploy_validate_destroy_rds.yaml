@@ -36,10 +36,11 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         USERNAME: ${{ secrets.USERNAME}}
-        PASSWORD: ${{ secrets.PASSWORD}}
+#        PASSWORD: ${{ secrets.PASSWORD}}
 
 
-      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY username=$USERNAME password=$PASSWORD" ansible/create-rds-db.yaml
+      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY username=$USERNAME" ansible/create-rds-db.yaml
+#      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY username=$USERNAME password=$PASSWORD" ansible/create-rds-db.yaml
       
 
 #########################################################
@@ -113,7 +114,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-        run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY username=$USERNAME password=$PASSWORD" ansible/delete-rds-db.yaml
+        run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY" ansible/delete-rds-db.yaml
         
 
 
