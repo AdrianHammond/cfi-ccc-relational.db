@@ -2,8 +2,8 @@
 - name: "Create RDS instance"
   hosts: localhost
   vars: 
-    username: myork
-    password: redhat123
+#    username: myork
+#    password: redhat123
     allocated_storage: 10 
     DB_ENGINE: "mariadb"
     DB_ID: "CFI-validator-db"
@@ -20,8 +20,8 @@
       storage_encrypted: True
       db_instance_class: db.t2.medium
       allocated_storage: "{{ allocated_storage }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
+#      username: "{{ username }}"
+#      password: "{{ password }}"
 
     register: dbdetails
 

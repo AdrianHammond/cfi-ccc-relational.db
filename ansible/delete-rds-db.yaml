@@ -2,8 +2,6 @@
 - name: "Delete RDS instance"
   hosts: localhost
   vars: 
-    username: myork
-    password: redhat123
     DB_ID: "CFI-validator-db"
     DB_AWS_REGION: "us-east-2"
     
