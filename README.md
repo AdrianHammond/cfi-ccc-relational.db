@@ -1,26 +1,58 @@
-#AWS Set up
+# CFI Service Deployment, Hardening, Validation and Deletion Repository
 
-AWS requires a default VPC to be created
-AWS requires a default Subnet to be created
-Use CLI
+The purpose of this repository is to provide infrastructure as code to deploy, harden, test and destroy services.
 
-#Git Secrets
-$
-¢
+Required credentials and secrets are held in GITHUB Action secrets for this repo. 
 
+This example is for Amazons Releational Database Service (RDS). 
 
-# Usage
+## Setup
 
-To use the credentials file aws_creds.yml, you can use the --extra-vars
-option to include them in the current playbook run.
+### GitHub Action Secrets
 
-``` shell 
-ansible-playbook ./create-rds-db.yaml --extra-vars=@~/aws_creds.yml 
+The following secrets need to be setup in this GutHub repo
+
+* AWS_ACCESS_KEY_ID
+* AWS_SECRET_ACCESS_KEY
+* DB Master Userid (TODO: this needs to be setup as currently errors)
+* DB Master Password (TODO: this needs to be setup as currently errors)
+
+### AWS Setup
+
+This example creates an RDS in the default VPC using the default subnet, the AWS region (us-east-2) is coded into the Ansible playbook.
+
+To create a default VPC and Subnet use the AWS cli.
+
+```shell
+aws configure
+```
+Then add WS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and default AWS Region (us-east-2)
+
+```shell
+aws aws ec2 create-default-vpc
 ```
 
-The variables can also be passed directly from the command line 
+## Database Setup
 
-``` shell 
-ansible-playbook ./create-rds-db.yaml --extra-vars “AWS_ACCESS_KEY_ID=MYACCESSKEY AWS_SECRET_ACCESS_KEY=MYSECRETACCESSKEY RDS_DB_USERNAME=cfiuser RDS_DB_PASSWORD=xxxxxx"
-```
+The database setup is coded into the [create]{ansible/create-rds-db.yaml} Ansible playbook. The database parameters used are:
 
+ * allocated_storage: 10 
+ * DB_ENGINE: "mariadb"
+ * DB_ID: "CFI-validator-db"
+
+
+## Workflow
+
+There is a GitHub Workflow that has been setup that include four jobs:
+
+1. Deploy: Creates the RDS
+2. Harden: Applies required policy hardening
+3. Validate: Runs the CFI Validator to ensure deploy services meets required policies
+4. Destroy: Deletes the RDS
+
+This workflow is trigger when a *push* is made to the Dev branch. The main and dev branches of this repo are write protected.
+
+
+## Usage
+
+TODO: Create this usage section
