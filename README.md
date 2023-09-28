@@ -6,6 +6,7 @@ Use CLI
 
 #Git Secrets
 $
+¢
 
 
 # Usage
