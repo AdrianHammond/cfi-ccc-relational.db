@@ -38,10 +38,32 @@ jobs:
 #       USERNAME: ${{ secrets.USERNAME}}
 #       PASSWORD: ${{ secrets.PASSWORD}}
 
-#   run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY master_username=$USERNAME password=$PASSWORD" ansible/create-rds-db.yaml
-      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY" ansible/create-rds-db.yaml
+
+      run: | 
+      ansible-playbook |
+      -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY" |
+      ansible/create-rds-db.yaml
       
 
+#########################################################
+##                                                     ##
+##                HARDEN SERVICE                       ##
+##                                                     ##
+#########################################################
+
+
+  harden:
+    name: harden
+    needs: deploy
+    runs-on: ubuntu-latest
+
+#  ==>>>  steps needs to be added below to invoke hardening <<<===
+
+    steps:
+      - name: Print a Message
+        run: echo "This is the harden service job"
+
+  
 #########################################################
 ##                                                     ##
 ##                VALIDATE SERVICE                     ##
@@ -51,20 +73,20 @@ jobs:
 
   validate:
     name: validate
-    needs: deploy
+    needs: harden
     runs-on: ubuntu-latest
 
 #  ==>>>  steps needs to be added below to invoke validator <<<===
 
     steps:
       - name: Print a Message
-        run: echo "This is the run validation workflow"
+        run: echo "This is the validate service job"
 
-        
+       
 
 #########################################################
 ##                                                     ##
-##                  DESTROY SERVICE                     ##
+##                  DESTROY SERVICE                    ##
 ##                                                     ##
 #########################################################
 
@@ -90,9 +112,16 @@ jobs:
           pip install boto3 botocore
 
       - name: Run Ansible playbook
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-        run: ansible-playbook ansible/delete-rds-db.yaml
- 
+        run: |
+        
+        ansible-playbook |
+        -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY" |
+        ansible/delete-rds-db.yaml
+        
 
 
 
