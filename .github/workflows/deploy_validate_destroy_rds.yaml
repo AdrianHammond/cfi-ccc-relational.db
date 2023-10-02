@@ -34,6 +34,15 @@ jobs:
     - name: Print Ansible version
       run: ansible --version
 
+    - name: Print boto version
+      run: pip show boto boto3 botocore
+
+    - name: Print boto version
+      run: ansible-config dump --only-changed
+
+    - name: Print OS version
+      run: cat /etc/os-release
+
 
     - name: Run Ansible playbook
       env:
