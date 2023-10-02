@@ -3,8 +3,8 @@
   hosts: localhost
   vars: 
 # TODO: MOVE DB Master USERNAME and PASSWORD into GIT SECRET. Currently issue as blank variable being passed  
-    master_username: myork
-    master_user_password: redhat123
+#    master_username: myork
+#    master_user_password: redhat123
     allocated_storage: 10 
     DB_ENGINE: "mariadb"
     DB_ID: "CFI-validator-db"
@@ -22,8 +22,8 @@
       db_instance_class: db.t2.medium
       allocated_storage: "{{ allocated_storage }}"
 # TODO: MOVE DB Master USERNAME and PASSWORD into GIT SECRET. Currently issue as blank variable being passed
-      master_username: "{{ master_username }}"
-      master_user_password: "{{ master_user_password }}"
+#      master_username: "{{ master_username }}"
+#      master_user_password: "{{ master_user_password }}"
 
     register: dbdetails
 
