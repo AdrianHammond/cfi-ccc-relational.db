@@ -31,17 +31,6 @@ jobs:
         pip install ansible
         pip install boto3 botocore
 
-    - name: Print Ansible version
-      run: ansible --version
-
-    - name: Print boto version
-      run: pip show boto boto3 botocore
-
-    - name: Print boto version
-      run: ansible-config dump --only-changed
-
-    - name: Print OS version
-      run: cat /etc/os-release
 
 
     - name: Run Ansible playbook
@@ -53,7 +42,7 @@ jobs:
         MASTER_USERNAME: ${{ secrets.MASTER_USERNAME}}
         MASTER_USER_PASSWORD: ${{ secrets.MASTER_USER_PASSWORD}}
 
-        run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY master_username=$MASTER_USERNAME master_user_password=$MASTER_USER_PASSWORD" ansible/create-rds-db.yaml
+      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY master_username=$MASTER_USERNAME master_user_password=$MASTER_USER_PASSWORD" ansible/create-rds-db.yaml
       
 #      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY" ansible/create-rds-db.yaml
 
