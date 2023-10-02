@@ -32,7 +32,8 @@ jobs:
         pip install boto3 botocore
 
     - name: Print MASTER_USERNAME SECRET
-      env: MASTER_USERNAME: ${{ secrets.MASTER_USERNAME}}
+      env: 
+        MASTER_USERNAME: ${{ secrets.MASTER_USERNAME}}
 
       run: echo "MASTER_USERNAME is ${{secrets.MASTER_USERNAME}}"
 
