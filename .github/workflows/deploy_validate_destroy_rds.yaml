@@ -39,8 +39,9 @@ jobs:
         MASTER_USERNAME: ${{ variable.MASTER_USERNAME}}
 #        MASTER_USER_PASSWORD: ${{ secrets.MASTER_USER_PASSWORD}}
 
+      run: echo "MASTER_USERNAME is ${{secrets.MASTER_USERNAME}}"
 
-      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY master_username=$MASTER_USERNAME" ansible/create-rds-db.yaml
+      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY" ansible/create-rds-db.yaml
 # TODO: MOVE DB Master USERNAME and PASSWORD into GIT SECRET. Currently issue as blank variable being passed
 #      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY username=$USERNAME password=$PASSWORD" ansible/create-rds-db.yaml
       
