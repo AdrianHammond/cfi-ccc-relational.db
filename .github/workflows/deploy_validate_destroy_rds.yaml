@@ -36,7 +36,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 # TODO: MOVE DB Master USERNAME and PASSWORD into GIT SECRET. Currently issue as blank variable being passed
-        MASTER_USERNAME: ${{ secrets.MASTER_USERNAME}}
+        MASTER_USERNAME: ${{ variables.MASTER_USERNAME}}
 #        MASTER_USER_PASSWORD: ${{ secrets.MASTER_USER_PASSWORD}}
 
 
