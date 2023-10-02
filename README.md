@@ -14,8 +14,8 @@ The following secrets need to be setup in this GutHub repo
 
 * AWS_ACCESS_KEY_ID
 * AWS_SECRET_ACCESS_KEY
-* DB Master Userid (TODO: this needs to be setup as currently errors)
-* DB Master Password (TODO: this needs to be setup as currently errors)
+* MASTER_USERNAME (TODO: this needs to be setup as currently errors)
+* MASTER_USER_PASSWORD (TODO: this needs to be setup as currently errors)
 
 ### AWS Setup
 
@@ -29,7 +29,7 @@ aws configure
 Then add WS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and default AWS Region (us-east-2)
 
 ```shell
-aws aws ec2 create-default-vpc
+aws ec2 create-default-vpc
 ```
 
 ## Database Setup
