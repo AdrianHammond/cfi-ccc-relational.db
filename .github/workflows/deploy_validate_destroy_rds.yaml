@@ -40,14 +40,14 @@ jobs:
 
 # TODO: MOVE DB Master USERNAME and PASSWORD into GIT SECRET. Currently issue as blank variable being passed
 # Opened this issue https://github.com/ansible-collections/amazon.aws/issues/1783
-#        MASTER_USERNAME: ${{ secrets.MASTER_USERNAME}}
-#       MASTER_USER_PASSWORD: ${{ secrets.MASTER_USER_PASSWORD}}
+        MASTER_USERNAME: ${{ secrets.MASTER_USERNAME}}
+        MASTER_USER_PASSWORD: ${{ secrets.MASTER_USER_PASSWORD}}
       
-      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY" ansible/create-rds-db.yaml
+#      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY" ansible/create-rds-db.yaml
 
 # TODO: MOVE DB Master USERNAME and PASSWORD into GIT SECRET. Currently issue as blank variable being passed
 # Opened this issue https://github.com/ansible-collections/amazon.aws/issues/1783
-#      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY master_username=$MASTER_USERNAME master_user_password=$MASTER_USER_PASSWORD" ansible/create-rds-db.yaml
+      run: ansible-playbook -e "aws_access_key=$AWS_ACCESS_KEY_ID aws_secret_key=$AWS_SECRET_ACCESS_KEY master_username=$MASTER_USERNAME master_user_password=$MASTER_USER_PASSWORD" ansible/create-rds-db.yaml
       
 
 #########################################################
