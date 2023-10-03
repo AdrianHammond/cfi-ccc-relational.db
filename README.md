@@ -4,7 +4,7 @@ The purpose of this repository is to provide infrastructure as code to deploy, h
 
 Required credentials and secrets are held in GITHUB Action secrets for this repo. 
 
-This example is for Amazons Releational Database Service (RDS). 
+This example is for Amazons Relational Database Service (RDS). 
 
 ## Setup
 
@@ -14,8 +14,8 @@ The following secrets need to be setup in this GutHub repo
 
 * AWS_ACCESS_KEY_ID
 * AWS_SECRET_ACCESS_KEY
-* MASTER_USERNAME (TODO: this needs to be setup as currently errors)
-* MASTER_USER_PASSWORD (TODO: this needs to be setup as currently errors)
+* MASTER_USERNAME
+* MASTER_USER_PASSWORD
 
 ### AWS Setup
 
@@ -45,10 +45,9 @@ The database setup is coded into the [create]{ansible/create-rds-db.yaml} Ansibl
 
 There is a GitHub Workflow that has been setup that include four jobs:
 
-1. Deploy: Creates the RDS
-2. Harden: Applies required policy hardening
-3. Validate: Runs the CFI Validator to ensure deploy services meets required policies
-4. Destroy: Deletes the RDS
+1. Deploy: Creates the hardened RDS
+2. Validate: Runs the CFI Validator to ensure deploy services meets required policies
+3. Destroy: Deletes the RDS
 
 This workflow is trigger when a *push* is made to the Dev branch. The main and dev branches of this repo are write protected.
 

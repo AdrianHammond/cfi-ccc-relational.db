@@ -2,10 +2,6 @@
 - name: "Create RDS instance"
   hosts: localhost
   vars: 
-# TODO: MOVE DB Master USERNAME and PASSWORD into GIT SECRET. Currently issue as blank variable being passed
-# Opened this issue https://github.com/ansible-collections/amazon.aws/issues/1783  
-#   master_username: cfival
-#    master_user_password: cfi12345
     allocated_storage: 10 
     DB_ENGINE: "mariadb"
     DB_ID: "CFI-validator-db"
@@ -22,10 +18,8 @@
       storage_encrypted: True
       db_instance_class: db.t2.medium
       allocated_storage: "{{ allocated_storage }}"
-# TODO: MOVE DB Master USERNAME and PASSWORD into GIT SECRET. Currently issue as blank variable being passed
-# Opened this issue https://github.com/ansible-collections/amazon.aws/issues/1783
-      username: "{{ master_username }}"
-      password: "{{ master_user_password }}"
+      master_username: "{{ master_username }}"
+      master_user_password: "{{ master_user_password }}"
 
     register: dbdetails
 
