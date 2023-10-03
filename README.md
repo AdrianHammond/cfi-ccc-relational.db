@@ -4,7 +4,7 @@ The purpose of this repository is to provide infrastructure as code to deploy, h
 
 Required credentials and secrets are held in GITHUB Action secrets for this repo. 
 
-This example is for Amazons Releational Database Service (RDS). 
+This example is for Amazons Relational Database Service (RDS). 
 
 ## Setup
 
@@ -14,8 +14,8 @@ The following secrets need to be setup in this GutHub repo
 
 * AWS_ACCESS_KEY_ID
 * AWS_SECRET_ACCESS_KEY
-* DB Master Userid (TODO: this needs to be setup as currently errors)
-* DB Master Password (TODO: this needs to be setup as currently errors)
+* MASTER_USERNAME
+* MASTER_USER_PASSWORD
 
 ### AWS Setup
 
@@ -29,7 +29,7 @@ aws configure
 Then add WS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and default AWS Region (us-east-2)
 
 ```shell
-aws aws ec2 create-default-vpc
+aws ec2 create-default-vpc
 ```
 
 ## Database Setup
@@ -45,10 +45,9 @@ The database setup is coded into the [create]{ansible/create-rds-db.yaml} Ansibl
 
 There is a GitHub Workflow that has been setup that include four jobs:
 
-1. Deploy: Creates the RDS
-2. Harden: Applies required policy hardening
-3. Validate: Runs the CFI Validator to ensure deploy services meets required policies
-4. Destroy: Deletes the RDS
+1. Deploy: Creates the hardened RDS
+2. Validate: Runs the CFI Validator to ensure deploy services meets required policies
+3. Destroy: Deletes the RDS
 
 This workflow is trigger when a *push* is made to the Dev branch. The main and dev branches of this repo are write protected.
 
@@ -56,3 +55,6 @@ This workflow is trigger when a *push* is made to the Dev branch. The main and d
 ## Usage
 
 TODO: Create this usage section
+
+
+Link to [aws rds ansible module](https://docs.ansible.com/ansible/latest/collections/amazon/aws/rds_instance_module.html)
